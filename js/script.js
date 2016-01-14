@@ -34,31 +34,31 @@ $(document).ready(function() {
 	    );
     }
 
-function getWeather() {
-	var openWeatherMapAPIKey = "";
-	 $.getJSON(
-		"/GarageOpener/info.json",
-		function(data) {
-		    openWeatherMapAPIKey = data.openWeatherAPIKey;
-		    console.log(openWeatherMapAPIKey);
+// function getWeather() {
+// 	var openWeatherMapAPIKey = "";
+// 	 $.getJSON(
+// 		"/GarageOpener/info.json",
+// 		function(data) {
+// 		    openWeatherMapAPIKey = data.openWeatherAPIKey;
+// 		    console.log(openWeatherMapAPIKey);
 
-function getRedditNews() {
-	$.getJSON(
-        "http://www.reddit.com/r/news.json?jsonp=?", function(data) {
+// function getRedditNews() {
+// 	$.getJSON(
+//         "http://www.reddit.com/r/news.json?jsonp=?", function(data) {
 
-			$.each(
-				data.data.children.slice(0, 5),
-				function (i, post) {
-					$("#redditNews").append( '<br> <h3>' + post.data.title + '</h3>');
-					$("#redditNews").append( post.data.url );
-					$("#redditNews").append( '<br>' + post.data.permalink );
-					$("#redditNews").append( '<br> UPS: ' + post.data.ups + ' DOWNS: ' + post.data.downs );
-					$("#redditNews").append( '<hr>' );
-				}
-			)
-        }
-    );
-}
+// 			$.each(
+// 				data.data.children.slice(0, 5),
+// 				function (i, post) {
+// 					$("#redditNews").append( '<br> <h3>' + post.data.title + '</h3>');
+// 					$("#redditNews").append( post.data.url );
+// 					$("#redditNews").append( '<br>' + post.data.permalink );
+// 					$("#redditNews").append( '<br> UPS: ' + post.data.ups + ' DOWNS: ' + post.data.downs );
+// 					$("#redditNews").append( '<hr>' );
+// 				}
+// 			)
+//         }
+//     );
+// }
 
 function getWeather() {
 	
@@ -70,9 +70,10 @@ function getWeather() {
 			    "http://api.openweathermap.org/data/2.5/weather?zip=20148,us&appid=" + openWeatherMapAPIKey,
 			    function(data)
 			    {
-			    	var temp = (data.main.temp - 273.15) * 1.8000 + 32.00;
+			    	var temp = Math.round((data.main.temp - 273.15) * 1.8000 + 32.00);
 					console.log("Temperature: " + temp);
-					$("#weather").append( '<br> <h3> Temperature: ' + temp + '</h3>');
+					console.log(data);
+					$("#weather").append( '<br> <h3>' + temp + '&deg F</h3>');
 			    }
 			);
 		}

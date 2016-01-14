@@ -25,7 +25,8 @@ $(document).ready(function() {
 						$("#redditNews").append( '<br> <h3>' + post.data.title + '</h3>');
 						$("#redditNews").append( post.data.url );
 						$("#redditNews").append( '<br>' + post.data.permalink );
-						$("#redditNews").append( '<br> UPS: ' + post.data.ups + 'DOWNS: ' + post.data.downs );
+						$("#redditNews").append( '<br> UPS: ' + post.data.ups);
+						// + 'DOWNS: ' + post.data.downs 
 						$("#redditNews").append( '<hr>' );
 					}
 				)

@@ -41,20 +41,42 @@ function getWeather() {
 		function(data) {
 		    openWeatherMapAPIKey = data.openWeatherAPIKey;
 		    console.log(openWeatherMapAPIKey);
+
+function getRedditNews() {
 	$.getJSON(
-        "http://api.openweathermap.org/data/2.5/weather?zip=20148,us&appid=" + openWeatherMapAPIKey,
-        function(data)
-        {
-        	var temp = (data.main.temp - 273.15) * 1.8000 + 32.00;
-			console.log("Temperature: " + temp);
-			$("#clockDiv").append( '<br> <h3> Temperature: ' + temp + '</h3>');
+        "http://www.reddit.com/r/news.json?jsonp=?", function(data) {
+
+			$.each(
+				data.data.children.slice(0, 5),
+				function (i, post) {
+					$("#redditNews").append( '<br> <h3>' + post.data.title + '</h3>');
+					$("#redditNews").append( post.data.url );
+					$("#redditNews").append( '<br>' + post.data.permalink );
+					$("#redditNews").append( '<br> UPS: ' + post.data.ups + ' DOWNS: ' + post.data.downs );
+					$("#redditNews").append( '<hr>' );
+				}
+			)
         }
     );
-		    
+}
+
+function getWeather() {
+	
+	 $.getJSON(	"/GarageOpener/info.json", function(data) {
+
+		    var openWeatherMapAPIKey = data.openWeatherAPIKey;
+
+			$.getJSON(
+			    "http://api.openweathermap.org/data/2.5/weather?zip=20148,us&appid=" + openWeatherMapAPIKey,
+			    function(data)
+			    {
+			    	var temp = (data.main.temp - 273.15) * 1.8000 + 32.00;
+					console.log("Temperature: " + temp);
+					$("#weather").append( '<br> <h3> Temperature: ' + temp + '</h3>');
+			    }
+			);
 		}
 	);
-
-
 }
 
 function startTime() {
@@ -62,11 +84,18 @@ function startTime() {
         var h = today.getHours();
         var m = today.getMinutes();
         var s = today.getSeconds();
+        if(h >= 13) {
+        	h = h - 12;
+        }
+        if(h == 0) {
+        	h = 12;
+        }
         m = checkTime(m);
         s = checkTime(s);
         $("#clockHeader").html(h + ":" + m + ":" + s);
         var t = setTimeout(startTime, 500);
 }
+
 function checkTime(i) {
         if (i < 10) {
                 i = "0" + i;

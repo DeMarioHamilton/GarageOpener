@@ -18,9 +18,9 @@ $(document).ready(function() {
     	console.log('getting data');
     }, 720000);
 
-	// $('#calendar').fullCalendar({
- //        // put your options and callbacks here
- //    })
+	$('#calendar').fullCalendar({
+        // put your options and callbacks here
+    })
 
 });
 

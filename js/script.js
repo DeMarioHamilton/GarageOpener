@@ -18,7 +18,9 @@ $(document).ready(function() {
     	console.log('getting data');
     }, 720000);
 
-
+	// $('#calendar').fullCalendar({
+ //        // put your options and callbacks here
+ //    })
 
 });
 
@@ -29,7 +31,7 @@ $(document).ready(function() {
 	        function(data)
 	        {
 	        	$("#redditNews").empty();
-	        	$("#redditNews").append( '<br> <h2 style="float: left"> News </h2> <br>');
+	        	$("#redditNews").append( '<br> <h1 style="float: left"> News </h1> <br>');
 
 				$.each(
 					data.data.children.slice(0, 5),

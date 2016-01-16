@@ -17,6 +17,10 @@
                 <meta name="apple-mobile-web-app-capable" content="yes">
                 <script type="text/javascript" src="/GarageOpener/js/script.js"></script>
 
+                <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.js"></script>
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.css"></script>
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.print.css"></script> -->
+
         </head>
         <body>
             <center>
@@ -27,11 +31,15 @@
                 <div>
                     <button type="button" class="btn btn-primary btn-lg" id="garageToggle"> Open/Closed </button>
                 </div>
-                
-                <div class="row">
+                <div class="container-fluid">
+                    <div class="row">
 
-                    <div id="redditNews" class="col-md-6"> </div>
-                    <div id="weather" class="col-md-6"></div>
+                        <div id="redditNews" class="col-md-6"> </div>
+                        <div id="weather" class="col-md-6"></div>
+                    </div>
+                    <div class="row">
+                        <div id='calendar'></div>
+                    </div>
                 </div>
             </center>
         </body>

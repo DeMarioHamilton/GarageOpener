@@ -32,12 +32,14 @@ function getRedditNews() {
         function(data)
         {
         	$("#redditNews").empty();
-        	$("#redditNews").append( '<br> <h1 style="float: left"> News </h1> <br>');
+        	//removed a break after "Today's News"
+        	$("#redditNews").append( '<br> <h1> Today\'s News </h1>');
 
 			$.each(
 				data.data.children.slice(0, 5),
 				function (i, post) {
-					$("#redditNews").append( '<br> <h3>' + post.data.title + '</h3>');
+					//removed a break before the title
+					$("#redditNews").append( '<h3>' + post.data.title + '</h3>');
 					$("#redditNews").append( '<a href=' + post.data.url + '>' + post.data.url + '</a>' );
 					// $("#redditNews").append( '<br>' + post.data.permalink );
 					$("#redditNews").append( '<br> UPS: ' + post.data.ups);
